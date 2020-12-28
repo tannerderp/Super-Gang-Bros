@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float turnSensitivity;
     [SerializeField] float jumpVel;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] public bool CanMove = true;
 
     private Rigidbody rigidBody;
     private Animator animator;
@@ -17,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private float distToGround;
     private bool grounded = false;
     private int jumpCooldown = 0; //WHY DO I NEED TO MAKE A COOLDOWN FOR EVERYTHING
+
+    [SerializeField] public int health = 3;
+    public float money = 0;
+    [SerializeField] private Text MoneyText;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +36,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Run();
-        Jump();
+        if (CanMove)
+        {
+            Run();
+            Jump();
+        }
+        HandleUI();
     }
 
     private void Run()
@@ -75,5 +85,10 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = false;
         }
+    }
+
+    private void HandleUI()
+    {
+        MoneyText.text = ": " + money;
     }
 }

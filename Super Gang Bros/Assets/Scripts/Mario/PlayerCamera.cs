@@ -12,6 +12,7 @@ public class PlayerCamera : MonoBehaviour
     private float mouseX = 0.0f;
     private float mouseY = 0.0f;
     private Vector3 originalTargetPos;
+    private Vector3 originalCameraPos;
     private bool aiming = false;
 
     [SerializeField] private GameObject player;
@@ -61,6 +62,7 @@ public class PlayerCamera : MonoBehaviour
         //aiming mode
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            originalCameraPos = transform.localPosition;
             transform.position = player.transform.position - transform.forward * 2;
             target.transform.position += transform.right * 0.5f;
             gunArm.enabled = true;
@@ -71,6 +73,7 @@ public class PlayerCamera : MonoBehaviour
             target.transform.localPosition = originalTargetPos;
             gunArm.enabled = false;
             aiming = false;
+            transform.localPosition = originalCameraPos;
         }
         if (aiming)
         {
