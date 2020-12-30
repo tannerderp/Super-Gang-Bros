@@ -8,11 +8,37 @@ public class GunArm : MonoBehaviour
 
     [SerializeField] private GameObject hand;
     [SerializeField] private GameObject target;
+    [SerializeField] private AudioClip shotSound;
+
+    private AudioSource audioSource;
+    private Ray ray;
+    private RaycastHit hit;
+
+    private int shotCooldown = 15;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        shotCooldown++;
+        if(Input.GetMouseButton(0) && shotCooldown > 20)
+        {
+            shotCooldown = 0;
+            audioSource.Play();
+            ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                Debug.Log(hit.collider.gameObject.name);
+                if (hit.collider.gameObject.GetComponent<HitByBulletSound>())
+                {
+                    hit.collider.gameObject.GetComponent<HitByBulletSound>().PlayHitSound();
+                }
+            }
+        }
     }
 
     void LateUpdate()

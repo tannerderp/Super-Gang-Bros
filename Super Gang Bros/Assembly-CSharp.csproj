@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Objects\Gun Store\MoneyCounter.cs" />
     <Compile Include="Assets\Scripts\Objects\Gun Store\StoreButtons.cs" />
     <Compile Include="Assets\Scripts\Objects\Gun Store\StoreEnterPoint.cs" />
+    <Compile Include="Assets\Scripts\Objects\HitByBulletSound.cs" />
     <Compile Include="Assets\Scripts\Objects\Tree.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/tanne/Documents/Unity Repos/Super Gang Bros/Super Gang Bros/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

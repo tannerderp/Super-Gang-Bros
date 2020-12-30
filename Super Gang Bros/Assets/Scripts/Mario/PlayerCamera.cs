@@ -18,6 +18,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject target;
     [SerializeField] private GunArm gunArm;
+    [SerializeField] private GameObject gun;
     private Animator playerAnimator;
 
     // Use this for initialization
@@ -66,12 +67,14 @@ public class PlayerCamera : MonoBehaviour
             transform.position = player.transform.position - transform.forward * 2;
             target.transform.position += transform.right * 0.5f;
             gunArm.enabled = true;
+            gun.SetActive(true);
             aiming = true;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             target.transform.localPosition = originalTargetPos;
             gunArm.enabled = false;
+            gun.SetActive(false);
             aiming = false;
             transform.localPosition = originalCameraPos;
         }
