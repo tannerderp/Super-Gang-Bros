@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public int health = 3;
     public float money = 0;
     [SerializeField] private Text MoneyText;
+    [SerializeField] private Text LifeText;
 
     // Start is called before the first frame update
     void Start()
@@ -90,5 +91,6 @@ public class PlayerMovement : MonoBehaviour
     private void HandleUI()
     {
         MoneyText.text = ": " + money;
+        LifeText.text = ": " + health;
     }
 }
