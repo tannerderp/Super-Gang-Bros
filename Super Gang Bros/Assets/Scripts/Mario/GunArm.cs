@@ -32,10 +32,13 @@ public class GunArm : MonoBehaviour
             ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
             if(Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.GetComponent<HitByBulletSound>())
                 {
                     hit.collider.gameObject.GetComponent<HitByBulletSound>().PlayHitSound();
+                }
+                if (hit.collider.gameObject.GetComponent<EnemyHealthManager>())
+                {
+                    hit.collider.gameObject.GetComponent<EnemyHealthManager>().LoseHealth(bulletStrength);
                 }
             }
         }
