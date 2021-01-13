@@ -1420,6 +1420,7 @@ MonoBehaviour:
   player: {fileID: 2080963412}
   speed: 3
   health: 3
+  maxDist: 3
   OutOfPipe: 0
 --- !u!54 &484055989
 Rigidbody:
